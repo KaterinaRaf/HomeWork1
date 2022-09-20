@@ -19,9 +19,5 @@ else if (Max < c)
 {
     Max = c;
 }
-else
-{
-    Max = a;
-}
 
 Console.WriteLine($"Наибольшее из введенных чисел {Max}");
