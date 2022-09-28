@@ -7,8 +7,8 @@ int N = Convert.ToInt32(Console.ReadLine());
 
 void Tab(int a)
 {
-    int i = 0;
-    while (i < a)
+    int i = 1;
+    while (i <= a)
     {
         Console.WriteLine(Math.Pow(i,3));
         i++;
