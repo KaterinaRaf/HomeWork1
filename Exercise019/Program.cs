@@ -4,38 +4,31 @@
 
 int GetNumber() // метод для ввода числа
 {
-    Console.WriteLine("Введите 5-ти значное число!");
-    return Convert.ToInt32(Console.ReadLine());
+    int number = 0;
+    while (number < 9999 || number > 99999)
+{
+    Console.WriteLine("Введите пятизначное число");
+    number = Convert.ToInt32(Console.ReadLine());
+}
+return number;
 }
 
-
-int CreateArray(int[] Num)    // преобразование введеного числа в массив
+void CheckPalindrom(int number) // метод для анализа зеркальности     
 {
-  int array[5];
-  int number;
-for (int i = 4; i >= 0; i--) 
+    int i1 = number / 10000;
+    int i2 = (number / 1000) % 10;
+    int i4 = (number / 10) % 10;
+    int i5 = number % 10;
+        
+    if ((i1 == i5) && (i2 == i4))
     {
-    array[i] = number % 10;
-    number /= 10;
+        Console.WriteLine(number + " - данное число палиндром!");
     }
-}
-
-
-int GetPalindrom(int[] pal) // метод для анализа зеркальности     
-{
-    if (pal[0] == pal[4] && pal[1] == pal[3]) // логическое И
-    return 1; 
     else
-    return 0; 
+    {
+    Console.WriteLine(number + " - данное число палиндром!");
+    } 
 }
 
-Num = GetNumber(Num);
-
-int res = GetPalindrom(int[] Num);
-   if (res = 1)
-   {
-     Console.WriteLine(Num + " - данное число палиндром!");
-   }
-   esle
-   Console.WriteLine(Num + " - данное число НЕ палиндром!");
-   }
+int number = GetNumber();
+CheckPalindrom(number);
