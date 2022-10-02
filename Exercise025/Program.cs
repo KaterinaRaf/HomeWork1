@@ -11,9 +11,15 @@ int GetNumber(string name)
 int A = GetNumber("вводимое в степень");
 int B = GetNumber("степень");
 
-void GetProduct(int A, int B)
+int GetProduct(int A, int B)
 {
-  Console.WriteLine("Число " + A + " в степени " + B + " равно " + Math.Pow(A,B));
+  int Product = 1;
+  for (int i = 0; i < B; i++)
+  {
+    Product = Product * A;
+  }
+  return Product;
 }
 
-GetProduct(A, B);
+int Product = GetProduct(A, B);
+Console.WriteLine("Число " + A + " в степени " + B + " равно " + Product);
