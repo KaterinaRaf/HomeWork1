@@ -47,6 +47,6 @@ PrintArray(array);
 double maxNumber = GetMaxNumber(array),
        minNumber = GetMinNumber(array),
        difference = maxNumber - minNumber;
-Console.WriteLine($"Разница между максимальным {maxNumber} и минимальным {minNumber} элементами равна {difference}");
+Console.WriteLine($"Разница между максимальным {maxNumber} и минимальным {minNumber} элементами массива равна {difference}");
 Console.WriteLine();
 
