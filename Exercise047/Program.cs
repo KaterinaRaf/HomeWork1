@@ -4,15 +4,15 @@
 //0,5 7 -2 -0,2
 //1 -3,3 8 -9,9
 
-double GetNumberFromConsole(string text) //пользовательский ввод данных
+int GetNumberFromConsole(string text) //пользовательский ввод данных
 {
     Console.WriteLine(text);
-    return Convert.ToDouble(Console.ReadLine());
+    return Convert.ToInt32(Console.ReadLine());
 }
 
-double GetRandomValue(double i, double j)
+double GetRandomValue(int i, int j)
 {
-    return new Random().Next(-50, 50);
+    return Math.Round(new Random().NextDouble() * 10, 1);
 }
 
 
@@ -33,7 +33,7 @@ void PrintArray(double[,] arr)
     {
         for(int j = 0; j < arr.GetLength(1); j++)
         {
-            Console.Write(arr[Math.Round(i,2),Math.Round(j,2)] + " ");
+            Console.Write(arr[i,j] + " ");
         }
         Console.WriteLine();
     }
@@ -41,12 +41,12 @@ void PrintArray(double[,] arr)
 
 double[,] InitializateArray(int m, int n)
 {
-    return new int[m,n];
+    return new double[m,n];
 }
 
 //КОД ОСНОВНОЙ ПРОГРАММЫ
-double m = GetNumberFromConsole("Введите размерность массива m"),
-       n = GetNumberFromConsole("Введите размерность массива n");
+int m = GetNumberFromConsole("Введите размерность массива m"),
+    n = GetNumberFromConsole("Введите размерность массива n");
 double[,] array = InitializateArray(m,n);
 FillArray(array);
 PrintArray(array);
