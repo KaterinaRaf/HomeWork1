@@ -9,16 +9,21 @@ double GetNumber(string name)
     return Convert.ToDouble(Console.ReadLine());
 }
 
+void CrossPoint(double k1, double b1, double k2, double b2)
+{
+    if (k1 != k2)
+    {
+    double x = (b2 - b1) / (k1 - k2);
+    double y = k1 * x + b1;
+    Console.WriteLine($"точка пересечения двух прямых ({Math.Round(x,2)}; {Math.Round(y,2)})");
+    }
+    else 
+    Console.WriteLine($"координаты k1 и k2 не должны быть одинаковыми!");
+}
+
 double k1 = GetNumber("k1: ");
 double b1 = GetNumber("b1: ");
 double k2 = GetNumber("k2: ");
 double b2 = GetNumber("b2: ");
 
-if (k1 != k2)
-{
-double x = (b2 - b1) / (k1 - k2);
-double y = k1 * x + b1;
-Console.WriteLine($"точка пересечения двух прямых ({Math.Round(x,2)}; {Math.Round(y,2)})");
-}
-else 
-Console.WriteLine($"координаты k1 и k2 не должны быть одинаковыми!");
+CrossPoint(k1, b1, k2, b2);
