@@ -55,7 +55,7 @@ void ArithmeticMeanCol(int[,] arr)
     {
         for(int j = 0; j < arr.GetLength(1); j++)
         {
-            while (i < arr.GetLength(0))
+            while (i < arr.GetLength(0)) // попробовать рекурсию
             {
                 sum += arr[i,0];
                 count++;
