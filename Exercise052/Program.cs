@@ -14,7 +14,7 @@ int GetNumberFromConsole(string text) //пользовательский вво�
 
 int GetRandomValue(int i, int j)
 {
-    return new Random().Next(0, 50);
+    return new Random().Next(0, 10);
 }
 
 void FillArray(int[,] arr)
@@ -49,23 +49,23 @@ int[,] InitializateArray(int m, int n)
 void ArithmeticMeanCol(int[,] arr) 
 {
     double mean = 0;
-    int sum = 0;
+    double sum = 0;
     int count = 0;
     for(int i = 0; i < arr.GetLength(0); i++)
     {
         for(int j = 0; j < arr.GetLength(1); j++)
         {
-            while (j < arr.GetLength(1))
+            while (i < arr.GetLength(0))
             {
-                sum += arr[0,j];
+                sum += arr[i,0];
                 count++;
-                j++;
+                i++;
             }  
             mean = sum / count;
         }   
     }    
     
-        Console.WriteLine($"Значение ареднего арифметического каждого столбца равно {mean}");
+        Console.WriteLine($"Значение среднего арифметического каждого столбца равно {mean}");
 }
 
 
