@@ -1,12 +1,15 @@
-﻿// Задача 52. Задайте двумерный массив из целых чисел. 
-//Найдите среднее арифметическое элементов в каждом столбце.
+﻿// Задача 56: Задайте прямоугольный двумерный массив.
+//Напишите программу, которая будет находить строку с наименьшей 
+//суммой элементов.
 // Например, задан массив:
 // 1 4 7 2
 // 5 9 2 3
 // 8 4 2 4
-// Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
+// 5 2 6 7
+// Программа считает сумму элементов в каждой строке и 
+// выдаёт номер строки с наименьшей суммой элементов: 1 строка
 
-int GetNumberFromConsole(string text) //пользовательский ввод данных
+int GetNumberFromConsole(string text)
 {
     Console.WriteLine(text);
     return Convert.ToInt32(Console.ReadLine());
@@ -45,19 +48,18 @@ int[,] InitializateArray(int m, int n)
     return new int[m,n];
 }
 
-
-void ArithmeticMeanCol(int[,] arr)
+void MinSumRow(int[,] arr)
 {
-    double sum = 0;
+    int sum = 0;
     for (int i = 0; i < arr.GetLength(1); i++)
     {
         for (int j = 0; j < arr.GetLength(0); j++)
         {
-            sum += arr[j, i];
-            if (j == (arr.GetLength(0) - 1))
+            sum += arr[i, j];
+            if (i == (arr.GetLength(0) - 1))
             {
-                double result = Math.Round(sum / (j + 1), 1);
-                Console.WriteLine($"Среднее арифметическое столбца {i+1} равно {result}");
+                int result = Math.Round(sum / (j + 1), 1);
+                Console.WriteLine($"Среднее арефметическое стобца {i+1} равно {result}");
                 sum = 0;
             }
         }
@@ -65,12 +67,16 @@ void ArithmeticMeanCol(int[,] arr)
 }
 
 
+
 //КОД ОСНОВНОЙ ПРОГРАММЫ
 int m = GetNumberFromConsole("Введите размерность массива m"),
     n = GetNumberFromConsole("Введите размерность массива n");
 int[,] array = InitializateArray(m,n);
-Console.WriteLine();
 FillArray(array);
 PrintArray(array);
+SortToLower(array);
 Console.WriteLine();
-ArithmeticMeanCol(array);
+MinSumRow(array);
+Console.WriteLine();
+
+
