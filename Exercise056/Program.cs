@@ -16,6 +16,8 @@ int[,] CheckArray(int a, int b)
     int m = Convert.ToInt32(Console.ReadLine());
     Console.WriteLine("Введите количество столбцов в массиве: ");
     int n = Convert.ToInt32(Console.ReadLine());
+    if (m == n) 
+        CreateArray();
     int[,] arr = new int[m, n];
     return arr;
 }
