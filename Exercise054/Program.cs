@@ -79,5 +79,3 @@ SortToLower(array);
 Console.WriteLine();
 PrintArray(array);
 Console.WriteLine();
-
-
