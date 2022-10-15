@@ -9,14 +9,32 @@
 // Программа считает сумму элементов в каждой строке и 
 // выдаёт номер строки с наименьшей суммой элементов: 1 строка
 
-int GetNumberFromConsole(string text)
+int[,] CheckArray(int a, int b)
 {
-    Console.WriteLine(text);
-    return Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Количество строк и количество столбцов в массиве не должно быть равным! введите еще раз: ");
+    Console.WriteLine("Введите количество строк в массиве: ");
+    int m = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Введите количество столбцов в массиве: ");
+    int n = Convert.ToInt32(Console.ReadLine());
+    int[,] arr = new int[m, n];
+    return arr;
+}
+
+int[,] CreateArray()
+{
+    Console.WriteLine("Введите количество строк в массиве: ");
+    int m = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Введите количество столбцов в массиве: ");
+    int n = Convert.ToInt32(Console.ReadLine());
+    int[,] arr = new int[m, n];
+    if (m == n) 
+        arr = CheckArray(m, n);
+    return arr;
 }
 
 int GetRandomValue(int i, int j)
 {
+    
     return new Random().Next(0, 10);
 }
 
@@ -29,6 +47,7 @@ void FillArray(int[,] arr)
             arr[i,j] = GetRandomValue(i, j);
         }
     }
+    Console.WriteLine();
 }
 
 void PrintArray(int[,] arr)
@@ -43,38 +62,37 @@ void PrintArray(int[,] arr)
     }
 }
 
-int[,] InitializateArray(int m, int n)
-{
-    return new int[m,n];
-}
-
 void MinSumRow(int[,] arr)
 {
-    int sum = 0;
+    int minRow = 0;
+    int minSumRow = 0;
+    int sumRow = 0;
     for (int i = 0; i < arr.GetLength(1); i++)
     {
-        for (int j = 0; j < arr.GetLength(0); j++)
-        {
-            sum += arr[i, j];
-            if (i == (arr.GetLength(0) - 1))
-            {
-                int result = Math.Round(sum / (j + 1), 1);
-                Console.WriteLine($"Среднее арефметическое стобца {i+1} равно {result}");
-                sum = 0;
-            }
-        }
+        minRow += arr[0, i];
     }
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        for (int j = 0; j < arr.GetLength(1); j++) 
+        sumRow += arr[i, j];
+
+        if (sumRow < minRow)
+        {
+            minRow = sumRow;
+            minSumRow = i;
+        }
+        sumRow = 0;
+    }
+    Console.WriteLine($"Минимальная сумма элементов {minRow} находится в строке # {minSumRow + 1}");
 }
 
 
 
 //КОД ОСНОВНОЙ ПРОГРАММЫ
-int m = GetNumberFromConsole("Введите размерность массива m"),
-    n = GetNumberFromConsole("Введите размерность массива n");
-int[,] array = InitializateArray(m,n);
+
+int[,] array = CreateArray();
 FillArray(array);
 PrintArray(array);
-SortToLower(array);
 Console.WriteLine();
 MinSumRow(array);
 Console.WriteLine();
