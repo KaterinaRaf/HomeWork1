@@ -46,26 +46,22 @@ int[,] InitializateArray(int m, int n)
 }
 
 
-void ArithmeticMeanCol(int[,] arr) 
+void ArithmeticMeanCol(int[,] arr)
 {
-    double mean = 0;
     double sum = 0;
-    int count = 0;
-    for(int i = 0; i < arr.GetLength(0); i++)
+    for (int i = 0; i < arr.GetLength(1); i++)
     {
-        for(int j = 0; j < arr.GetLength(1); j++)
+        for (int j = 0; j < arr.GetLength(0); j++)
         {
-            while (i < arr.GetLength(0)) // попробовать рекурсию
+            sum += arr[j, i];
+            if (j == (arr.GetLength(0) - 1))
             {
-                sum += arr[i,0];
-                count++;
-                i++;
-            }  
-            mean = sum / count;
-        }   
-    }    
-    
-        Console.WriteLine($"Значение среднего арифметического каждого столбца равно {mean}");
+                double result = Math.Round(sum / (j + 1), 1);
+                Console.WriteLine($"Среднее арефметическое стобца {i+1} равно {result}");
+                sum = 0;
+            }
+        }
+    }
 }
 
 
