@@ -36,7 +36,6 @@ int[,] CreateArray(int m, int n)
 
 int GetRandomValue(int i, int j)
 {
-    
     return new Random().Next(0, 10);
 }
 
@@ -62,6 +61,7 @@ void PrintArray(int[,] arr)
         }
         Console.WriteLine();
     }
+    Console.WriteLine();
 }
 
 void MinSumRow(int[,] arr)
@@ -100,6 +100,5 @@ n = check.Item2;
 int[,] array = CreateArray(m, n);
 FillArray(array);
 PrintArray(array);
-Console.WriteLine();
 MinSumRow(array);
 Console.WriteLine();
