@@ -9,28 +9,28 @@
 // Программа считает сумму элементов в каждой строке и 
 // выдаёт номер строки с наименьшей суммой элементов: 1 строка
 
-int[,] CheckArray(int a, int b)
+(int, int) GetNumberFromConsole()
 {
-    Console.WriteLine("Количество строк и количество столбцов в массиве не должно быть равным! введите еще раз: ");
-    Console.WriteLine("Введите количество строк в массиве: ");
-    int m = Convert.ToInt32(Console.ReadLine());
-    Console.WriteLine("Введите количество столбцов в массиве: ");
-    int n = Convert.ToInt32(Console.ReadLine());
-    if (m == n) 
-        CreateArray();
-    int[,] arr = new int[m, n];
-    return arr;
+    Console.WriteLine("Введите размерность массива");
+    return (Convert.ToInt32(Console.ReadLine()),
+            Convert.ToInt32(Console.ReadLine()));
 }
 
-int[,] CreateArray()
+(int, int) CheckArray(int m, int n)
 {
-    Console.WriteLine("Введите количество строк в массиве: ");
-    int m = Convert.ToInt32(Console.ReadLine());
-    Console.WriteLine("Введите количество столбцов в массиве: ");
-    int n = Convert.ToInt32(Console.ReadLine());
+    while (m == n)
+        {
+        Console.WriteLine("Количество строк и количество столбцов в массиве не должно быть равным! введите еще раз: ");
+        var size = GetNumberFromConsole();
+        m = size.Item1;
+        n = size.Item2;
+        }
+    return (m,n);
+}
+
+int[,] CreateArray(int m, int n)
+{
     int[,] arr = new int[m, n];
-    if (m == n) 
-        arr = CheckArray(m, n);
     return arr;
 }
 
@@ -91,12 +91,15 @@ void MinSumRow(int[,] arr)
 
 
 //КОД ОСНОВНОЙ ПРОГРАММЫ
-
-int[,] array = CreateArray();
+var size = GetNumberFromConsole();
+int m = size.Item1,
+    n = size.Item2;
+var check = CheckArray(m, n);
+m = check.Item1;
+n = check.Item2;
+int[,] array = CreateArray(m, n);
 FillArray(array);
 PrintArray(array);
 Console.WriteLine();
 MinSumRow(array);
 Console.WriteLine();
-
-
